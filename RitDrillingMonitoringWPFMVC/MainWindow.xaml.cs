@@ -61,7 +61,7 @@ namespace RitDrillingMonitoringWPFMVC
         {
             try
             {
-
+                lvDrills.ItemsSource = DrillMachineService.GetDrillMachines();
                 foreach (var drillMarker in DrillMarkerService.GetDrillMarkers())
                 {
                     MapControl.Markers.Add(drillMarker);
@@ -112,7 +112,6 @@ namespace RitDrillingMonitoringWPFMVC
         }
         private void MarkerClick(DrillMarker marker)
         {
-            Debug.Print(marker.Id.ToString());
             marker.Map.Position = marker.Position;
             marker.Map.Zoom = 16;
             MapControl.Markers.Remove(marker);
@@ -170,5 +169,24 @@ namespace RitDrillingMonitoringWPFMVC
             this.WindowState = WindowState.Minimized;
         }
         #endregion
+
+        private void LvDrills_OnSelected(object sender, RoutedEventArgs e)
+        {
+            var markers = MapControl.Markers.ToList();
+            foreach (var marker in markers)
+            {
+                if (typeof(DrillMarker) == marker.GetType())
+                {
+                    if (((DrillMarker)marker).Id == ((DrillMachine)lvDrills.SelectedItem).IddrillingMachine)
+                    {
+                        _currentElement = (DrillMarker)marker;
+                        MarkerClick((DrillMarker)marker);
+//TODO: Исправить баг с не отчисткой выбора при клике следующего бура в списке 
+//TODO: Добавить кнопку добавления, см гит
+                    }
+                }
+            }
+            
+        }
     }
 }

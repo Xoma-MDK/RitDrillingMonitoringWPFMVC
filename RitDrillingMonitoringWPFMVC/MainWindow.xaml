@@ -79,17 +79,107 @@
     </Window.Template>
     <Grid x:Name="Grid">
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+
+            <ListView
+                    x:Name="lvDrills"
+                    Grid.Column="0"
+                    HorizontalAlignment="Stretch"
+                    Width="200"
+                    Height="Auto"
+                    Margin="0,0,0,0"
+                    d:ItemsSource="{d:SampleData ItemCount=1}"
+                    Background="#1E1E1E"
+                    BorderBrush="Transparent"
+                    BorderThickness="0"
+                    SelectionChanged="LvDrills_OnSelected">
+
+                <ListView.Style>
+                    <Style TargetType="ListView">
+                        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden" />
+                        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+                    </Style>
+                </ListView.Style>
+
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                                Height="80"
+                                Margin="5,5,5,5"
+                                Background="#242424"
+                                CornerRadius="2">
+                            <Grid>
+
+                                <StackPanel
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Orientation="Vertical">
+
+                                    <Label
+                                            Padding="0,0,0,3"
+                                            HorizontalAlignment="Center"
+                                            Content="{Binding Title}"
+                                            FontSize="20"
+                                            Foreground="#C5C5C5"
+                                            Style="{StaticResource LabelStyle}" />
+
+                                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                        <Label
+                                                Padding="0,0,0,0"
+                                                Content="{Binding Latitude, StringFormat=\{0:F3\}}"
+                                                FontSize="12"
+                                                Foreground="#C5C5C5"
+                                                Style="{StaticResource LabelStyle}" />
+
+                                        <Label
+                                                Margin="10,0,0,0"
+                                                Padding="0,0,0,0"
+                                                Content="{Binding Longitude, StringFormat=\{0:F3\}}"
+                                                FontSize="12"
+                                                Foreground="#C5C5C5"
+                                                Style="{StaticResource LabelStyle}" />
+                                    </StackPanel>
+
+                                    <Label
+                                            Padding="0,3,0,0"
+                                            HorizontalAlignment="Center"
+                                            Content="{Binding PositionTag}"
+                                            FontSize="12"
+                                            Foreground="#C5C5C5"
+                                            Style="{StaticResource LabelStyle}" />
+                                </StackPanel>
+
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        
         <windowsPresentation:GMapControl HorizontalAlignment="Stretch" x:Name="MapControl"
-                                        MinZoom="2"
-                                        MaxZoom="18"
-                                        CanDragMap="True"
-                                        ShowTileGridLines="False"
-                                        MouseDown="MapControlDrill_MouseDown" 
-                                        Grid.Column="0"
-       >
+                                         MinZoom="2"
+                                         MaxZoom="18"
+                                         CanDragMap="True"
+                                         ShowTileGridLines="False"
+                                         MouseDown="MapControlDrill_MouseDown" 
+                                         Grid.Column="1"
+        >
 
         </windowsPresentation:GMapControl>
         <StackPanel 
@@ -97,7 +187,7 @@
            Visibility="Collapsed" 
            Background="AliceBlue"  
            HorizontalAlignment="Stretch"
-           Grid.Column="1"
+           Grid.Column="2"
            Width="200">
             <Grid>
                 <Grid.ColumnDefinitions>
