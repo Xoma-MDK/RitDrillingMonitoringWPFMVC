@@ -44,7 +44,7 @@ namespace RitDrillingMonitoringWPFMVC.Services
                 });
                 db.DrillPolygons.Load();
                 oldDrillMarker.PositionTag = String.Empty;
-                var holes = HoleMarkerService.GetDrillMarkers();
+                var holes = HoleMarkerService.GetDrillHoles();
                 foreach (var hole in holes)
                 {
                     if (hole.IsInRange5(newDrillMarker.Position.Lat, newDrillMarker.Position.Lng))

@@ -1,21 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using System.Net.WebSockets;
-using System.Reflection.Metadata;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using GMap.NET;
-using GMap.NET.WindowsPresentation;
 using RitDrillingMonitoringWPFMVC.Models;
 using RitDrillingMonitoringWPFMVC.Services;
 using RitDrillingMonitoringWPFMVC.Views;
-using WebSocketSharp;
 
 namespace RitDrillingMonitoringWPFMVC
 {
@@ -78,12 +72,9 @@ namespace RitDrillingMonitoringWPFMVC
         {
             try
             {
-                using var db = new RitnavSystemForDrillMachinesContext();
-                var listPotygons = db.DrillPolygons.ToList();
-                db.CoordinatesDrillPolygons.Load();
-                foreach (var polygon in listPotygons)
+                foreach (var drillPolygon in DrillPolygonService.GetDrillPolygons())
                 {
-                    MapControl.Markers.Add(new Views.DrillingPolygon(polygon.DrillingPolygonCoordinatesLatLngs, polygon.IddrillPolygon));
+                    MapControl.Markers.Add(drillPolygon);
                 }
             }
             catch
@@ -97,11 +88,9 @@ namespace RitDrillingMonitoringWPFMVC
         {
             try
             {
-                using var db = new RitnavSystemForDrillMachinesContext();
-                var listHoles = db.DrillHoles.ToList();
-                foreach (var hole in listHoles)
+                foreach (var drillHole in HoleMarkerService.GetDrillHoles())
                 {
-                    MapControl.Markers.Add(new HoleMarker(new PointLatLng(hole.Latitude, hole.Longitude), hole.IddrillHole));
+                    MapControl.Markers.Add(drillHole);
                 }
             }
             catch

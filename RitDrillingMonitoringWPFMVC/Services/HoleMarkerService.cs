@@ -11,7 +11,7 @@ namespace RitDrillingMonitoringWPFMVC.Services
 {
     internal class HoleMarkerService
     {
-        public static List<HoleMarker> GetDrillMarkers()
+        public static List<HoleMarker> GetDrillHoles()
         {
             var list = new List<HoleMarker>();
             using var db = new RitnavSystemForDrillMachinesContext();

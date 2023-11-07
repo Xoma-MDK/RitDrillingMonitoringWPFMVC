@@ -1,0 +1,30 @@
+﻿using RitDrillingMonitoringWPFMVC.Models;
+using RitDrillingMonitoringWPFMVC.Views;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Globalization;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+
+namespace RitDrillingMonitoringWPFMVC.Services
+{
+    internal class DrillPolygonService
+    {
+        public static List<DrillingPolygon> GetDrillPolygons()
+        {
+            var list = new List<DrillingPolygon>();
+            using var db = new RitnavSystemForDrillMachinesContext();
+            var listPotygons = db.DrillPolygons.ToList();
+            db.CoordinatesDrillPolygons.Load();
+            foreach (var polygon in listPotygons)
+            {
+                list.Add(new DrillingPolygon(polygon.DrillingPolygonCoordinatesLatLngs, polygon.IddrillPolygon));
+            }
+            return list;
+        }
+    }
+}
