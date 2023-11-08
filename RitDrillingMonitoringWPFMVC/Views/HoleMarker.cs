@@ -62,7 +62,7 @@ namespace RitDrillingMonitoringWPFMVC.Views
             return distance <= 5;
         }
 
-        private double ToRadians(double angle)
+        private static double ToRadians(double angle)
         {
             return (Math.PI / 180) * angle;
         }

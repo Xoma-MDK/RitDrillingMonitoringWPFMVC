@@ -18,7 +18,6 @@ namespace RitDrillingMonitoringWPFMVC.Services
             List<DrillHole> listHoles = db.DrillHoles.ToList();
             foreach (DrillHole hole in listHoles)
             {
-                
                 list.Add(new HoleMarker(new PointLatLng(hole.Latitude, hole.Longitude), hole.IddrillHole));
             }
             return list;

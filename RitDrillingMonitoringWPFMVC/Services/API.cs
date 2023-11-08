@@ -28,7 +28,6 @@ namespace RitDrillingMonitoringWPFMVC.Services
         public void Init()
         {
             _webSocket.Connect();
-            //_webSocket.Send("Hello server, i am client");
         }
         public void WebSocketOnMessage(object viewer, MessageEventArgs a)
         {
@@ -39,12 +38,14 @@ namespace RitDrillingMonitoringWPFMVC.Services
                 var Longitude = float.Parse(a.Data.Split(",")[3].Replace('.', ','));
                 using var db = new RitnavSystemForDrillMachinesContext();
                 var drillMachine = db.DrillMachines.FirstOrDefault(d => d.IddrillingMachine == id);
-                drillMachine.Latitude = Latitude;
-                drillMachine.Longitude = Longitude;
-                _action(drillMachine);
-
+                if (drillMachine != null)
+                {
+                    drillMachine.Latitude = Latitude;
+                    drillMachine.Longitude = Longitude;
+                    _action(drillMachine);
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // ignored
             }

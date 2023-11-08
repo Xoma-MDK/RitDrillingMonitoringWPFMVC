@@ -77,16 +77,27 @@
             </Border>
         </ControlTemplate>
     </Window.Template>
-    <Grid x:Name="Grid">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="Auto"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        <Grid
+            Grid.Column="0"
+            Width="200">
 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
             <ListView
                     x:Name="lvDrills"
-                    Grid.Column="0"
+                    Grid.Row="1"
                     HorizontalAlignment="Stretch"
                     Width="200"
                     Height="Auto"
@@ -171,7 +182,25 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        
+            <Border
+                Grid.Row="2"
+                Height="80"
+                Margin="10,5,10,5"
+                Background="#242424"
+                CornerRadius="2"
+                DockPanel.Dock="Bottom">
+
+                <Button
+                    x:Name="BtnAddDrill"
+                    Height="80"
+                    VerticalAlignment="Bottom"
+                    Content="+"
+                    FontSize="30"
+                    Style="{StaticResource MenuButtonStyle}" Click="BtnAddDrill_Click" />
+
+            </Border>
+        </Grid>
+
         <windowsPresentation:GMapControl HorizontalAlignment="Stretch" x:Name="MapControl"
                                          MinZoom="2"
                                          MaxZoom="18"
@@ -184,12 +213,13 @@
         </windowsPresentation:GMapControl>
         <StackPanel 
            x:Name="Panel" 
-           Visibility="Collapsed" 
-           Background="AliceBlue"  
+           Visibility="Visible"
            HorizontalAlignment="Stretch"
            Grid.Column="2"
-           Width="200">
-            <Grid>
+           Width="200"
+           Background="#1E1E1E"
+           >
+            <Grid Margin="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -199,12 +229,12 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Column="0">Широта:</TextBlock>
-                <TextBox IsReadOnly="True" IsEnabled="False" x:Name="TbLatitude" Grid.Column="1"></TextBox>
-                <TextBlock Grid.Column="0" Grid.Row="1">Долгота:</TextBlock>
-                <TextBox IsReadOnly="True" IsEnabled="False" x:Name="TbLongtitude" Grid.Row="1" Grid.Column="1"></TextBox>
-                <TextBlock Grid.Column="0" Grid.Row="2">Статус:</TextBlock>
-                <TextBox IsReadOnly="True" IsEnabled="False" x:Name="TbStatus" Grid.Row="2" Grid.Column="1"></TextBox>
+                <TextBlock Grid.Row="0" Margin="5" Foreground="White" Grid.Column="0">Широта:</TextBlock>
+                <TextBox IsReadOnly="True" Margin="2" Style="{StaticResource TextBoxStyle}" IsEnabled="False" x:Name="TbLatitude" Grid.Row="0" Grid.Column="1"></TextBox>
+                <TextBlock Grid.Column="0" Margin="5" Foreground="White" Grid.Row="1">Долгота:</TextBlock>
+                <TextBox IsReadOnly="True" Margin="2" Style="{StaticResource TextBoxStyle}" IsEnabled="False" x:Name="TbLongtitude" Grid.Row="1" Grid.Column="1"></TextBox>
+                <TextBlock Grid.Column="0" Margin="5" Foreground="White" Grid.Row="2">Статус:</TextBlock>
+                <TextBox IsReadOnly="True" Margin="2" Style="{StaticResource TextBoxStyle}" IsEnabled="False" x:Name="TbStatus" Grid.Row="2" Grid.Column="1"></TextBox>
             </Grid>
 
         </StackPanel>

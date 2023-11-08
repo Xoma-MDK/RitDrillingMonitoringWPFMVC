@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using GMap.NET;
+using GMap.NET.WindowsPresentation;
 using RitDrillingMonitoringWPFMVC.Models;
 using RitDrillingMonitoringWPFMVC.Services;
 using RitDrillingMonitoringWPFMVC.Views;
@@ -72,7 +73,7 @@ namespace RitDrillingMonitoringWPFMVC
         {
             try
             {
-                foreach (var drillPolygon in DrillPolygonService.GetDrillPolygons())
+                foreach (var drillPolygon in DrillPolygonService.GetDrillPolygons(MapControl))
                 {
                     MapControl.Markers.Add(drillPolygon);
                 }
@@ -150,12 +151,12 @@ namespace RitDrillingMonitoringWPFMVC
 
         private void BtnMaximize_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = (this.WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized;
+            WindowState = (WindowState == WindowState.Maximized) ? WindowState.Normal : WindowState.Maximized;
         }
 
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Minimized;
+            WindowState = WindowState.Minimized;
         }
         #endregion
 
@@ -170,12 +171,26 @@ namespace RitDrillingMonitoringWPFMVC
                     {
                         _currentElement = (DrillMarker)marker;
                         MarkerClick((DrillMarker)marker);
-//TODO: Исправить баг с не отчисткой выбора при клике следующего бура в списке 
-//TODO: Добавить кнопку добавления, см гит
                     }
                 }
             }
             
+        }
+
+        private void BtnAddDrill_Click(object sender, RoutedEventArgs e)
+        {
+            var Position = MapControl.Position;
+
+            var modalCreateDrillMachine = new ModalCreateDrillMachine();
+            modalCreateDrillMachine.Owner = this;
+            if (modalCreateDrillMachine.ShowDialog() == true)
+            {
+                DrillMachineService.CreateDrillMachine(modalCreateDrillMachine.Title, Position.Lat, Position.Lng);
+                LoadDrillMarkers();
+                LoadDrillingPolygons();
+                LoadHoleMarkers();
+            }
+
         }
     }
 }

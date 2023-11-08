@@ -13,10 +13,12 @@ namespace RitDrillingMonitoringWPFMVC.Views
 {
     internal class DrillingPolygon : GMapPolygon
     {
+        private readonly GMapControl _map;
         public int Id { get; set; }
-        public DrillingPolygon(IEnumerable<PointLatLng> points, int id) : base(points)
+        public DrillingPolygon(IEnumerable<PointLatLng> points, int id, GMapControl map) : base(points)
         {
             Id = id;
+            _map = map;
             Shape = Shape = new Path
             {
                 Stroke = Brushes.DarkBlue,
@@ -24,6 +26,19 @@ namespace RitDrillingMonitoringWPFMVC.Views
                 Effect = null,
                 Fill = Brushes.DarkBlue,
                 Opacity = 0.25
+
+            };
+            Shape.MouseWheel += (sender, e) =>
+            {
+
+                if (e.Delta > 0)
+                {
+                    _map.Zoom += 1;
+                }
+                else
+                {
+                    _map.Zoom -= 1;
+                }
 
             };
             Points = points.ToList();

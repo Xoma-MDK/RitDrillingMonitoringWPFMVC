@@ -9,12 +9,13 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using GMap.NET.WindowsPresentation;
 
 namespace RitDrillingMonitoringWPFMVC.Services
 {
     internal class DrillPolygonService
     {
-        public static List<DrillingPolygon> GetDrillPolygons()
+        public static List<DrillingPolygon> GetDrillPolygons(GMapControl map)
         {
             var list = new List<DrillingPolygon>();
             using var db = new RitnavSystemForDrillMachinesContext();
@@ -22,7 +23,7 @@ namespace RitDrillingMonitoringWPFMVC.Services
             db.CoordinatesDrillPolygons.Load();
             foreach (var polygon in listPotygons)
             {
-                list.Add(new DrillingPolygon(polygon.DrillingPolygonCoordinatesLatLngs, polygon.IddrillPolygon));
+                list.Add(new DrillingPolygon(polygon.DrillingPolygonCoordinatesLatLngs, polygon.IddrillPolygon, map));
             }
             return list;
         }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GMap.NET;
+using GMap.NET.WindowsPresentation;
 using RitDrillingMonitoringWPFMVC.Models;
 using RitDrillingMonitoringWPFMVC.Views;
 
@@ -61,7 +62,7 @@ namespace RitDrillingMonitoringWPFMVC.Services
                     foreach (var polygon in polygons)
                     {
                         var poygonDrill = new DrillingPolygon(polygon.DrillingPolygonCoordinatesLatLngs,
-                            polygon.IddrillPolygon);
+                            polygon.IddrillPolygon, new GMapControl());
                         if (poygonDrill.IsInside(newDrillMarker.Position))
                         {
                             oldDrillMarker.PositionTag = $"{polygon.DesignatingTag}";

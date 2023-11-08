@@ -16,5 +16,20 @@ namespace RitDrillingMonitoringWPFMVC.Services
             using var db = new RitnavSystemForDrillMachinesContext();
             return db.DrillMachines.ToList();
         }
+
+        public static DrillMachine CreateDrillMachine(string title, double Latitude,double Longitude)
+        {
+            var drillMachine = new DrillMachine()
+            {
+                Title = title,
+                PositionTag = "Вне блока",
+                Longitude = (float)Longitude,
+                Latitude = (float)Latitude,
+            };
+            using var db = new RitnavSystemForDrillMachinesContext();
+            db.DrillMachines.Add(drillMachine);
+            db.SaveChanges();
+            return drillMachine;
+        }
     }
 }

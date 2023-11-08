@@ -1,0 +1,129 @@
+﻿<Window x:Class="RitDrillingMonitoringWPFMVC.Views.ModalCreateDrillMachine"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RitDrillingMonitoringWPFMVC.Views"
+        mc:Ignorable="d"
+        Title="ModalCreateDrillMachine" Height="150" Width="250" WindowStartupLocation="CenterOwner" MaxWidth="600" MaxHeight="150" MinHeight="150" MinWidth="200">
+    <Window.Style>
+        <Style TargetType="Window">
+            <Setter Property="Background" Value="#FF212121" />
+            <Setter Property="WindowChrome.WindowChrome">
+                <Setter.Value>
+                    <WindowChrome
+                    CaptionHeight="30"
+                    CornerRadius="10"
+                    GlassFrameThickness="0"
+                    ResizeBorderThickness="5" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Style>
+    <Window.Template>
+        <ControlTemplate TargetType="Window">
+            <Border
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}">
+                <AdornerDecorator>
+                    <Grid>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <StackPanel
+                        Grid.Row="0"
+                        HorizontalAlignment="Right"
+                        IsHitTestVisible="True"
+                        Orientation="Horizontal">
+                            <Button
+                            x:Name="Minimize"
+                            Grid.Row="0"
+                            Width="30"
+                            Height="30"
+                            Click="BtnMinimize_Click"
+                            Content="&#xE921;"
+                            FontFamily="Segoe MDL2 Assets"
+                            FontSize="8"
+                            Style="{StaticResource MenuButtonStyle}"
+                            WindowChrome.IsHitTestVisibleInChrome="True" />
+                            <Button
+                            Width="30"
+                            Height="30"
+                            Click="BtnMaximize_Click"
+                            Content="&#xE923;"
+                            FontFamily="Segoe MDL2 Assets"
+                            FontSize="8"
+                            Style="{StaticResource MenuButtonStyle}"
+                            WindowChrome.IsHitTestVisibleInChrome="True" />
+                            <Button
+                            Width="30"
+                            Height="30"
+                            Click="BtnExit_Click"
+                            Content="&#xE8BB;"
+                            FontFamily="Segoe MDL2 Assets"
+                            FontSize="8"
+                            Style="{StaticResource MenuButtonStyle}"
+                            WindowChrome.IsHitTestVisibleInChrome="True" />
+                        </StackPanel>
+
+                        <ContentPresenter Grid.Row="1" />
+                    </Grid>
+                </AdornerDecorator>
+            </Border>
+        </ControlTemplate>
+    </Window.Template>
+    <Grid>
+        <Border Background="#1a1a1a" Margin="10" CornerRadius="10" BorderBrush="Gray">
+            <Grid>
+                <Grid VerticalAlignment="Top" Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" HorizontalAlignment="Stretch" Content="Название: " Style="{StaticResource LabelStyle}"  VerticalAlignment="Center"/>
+                    <TextBox Grid.Column="1" Margin="5" x:Name="TbTitle" Style="{StaticResource TextBoxStyle}" VerticalAlignment="Center"  TextWrapping="NoWrap" Height="21" HorizontalAlignment="Stretch"/>
+                </Grid>
+                <Grid VerticalAlignment="Bottom">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="Создать" HorizontalAlignment="Center" Margin="5" Click="Button_Click">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="FontSize" Value="16" />
+                                <Setter Property="Foreground" Value="LightGray" />
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="VerticalContentAlignment" Value="Center" />
+                                <Setter Property="Background" Value="Black" />
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="BorderBrush" Value="Gray" />
+                                <Setter Property="Margin" Value="0,0,0,0" />
+                                <Setter Property="Padding" Value="3" />
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Grid.Column="1" Content="Отмена" HorizontalAlignment="Center" Margin="5" IsCancel="True">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="FontSize" Value="16" />
+                                <Setter Property="Foreground" Value="LightGray" />
+                                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                <Setter Property="VerticalContentAlignment" Value="Center" />
+                                <Setter Property="Background" Value="Black" />
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="BorderBrush" Value="Gray" />
+                                <Setter Property="Margin" Value="0,0,0,0" />
+                                <Setter Property="Padding" Value="3" />
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
