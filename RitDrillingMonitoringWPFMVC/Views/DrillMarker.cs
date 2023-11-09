@@ -21,7 +21,7 @@ namespace RitDrillingMonitoringWPFMVC.Views
             {
                 _isSelected = value;
                 _pinSrcImage = null;
-                Shape = IsSelected ? CreatePinImage(this, new Uri("pack://application:,,,/Resources/pin_blue.png", UriKind.Absolute)) : CreatePinImage(this, new Uri("pack://application:,,,/Resources/pin.png", UriKind.Absolute));
+                Shape = IsSelected ? CreatePinImage(this, new Uri("pack://application:,,,/Resources/drill selected.png", UriKind.Absolute)) : CreatePinImage(this, new Uri("pack://application:,,,/Resources/drill.png", UriKind.Absolute));
             }
         }
 

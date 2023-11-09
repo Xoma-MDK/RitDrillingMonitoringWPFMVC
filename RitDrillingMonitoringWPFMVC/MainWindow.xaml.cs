@@ -107,8 +107,9 @@ namespace RitDrillingMonitoringWPFMVC
             MapControl.Markers.Remove(marker);
             marker.IsSelected = true;
             MapControl.Markers.Add(marker);
-            TbLatitude.Text = marker.Position.Lat.ToString(CultureInfo.InvariantCulture);
-            TbLongtitude.Text = marker.Position.Lng.ToString(CultureInfo.InvariantCulture);
+            TbLatitude.Text = $"{marker.Position.Lat:F6}";
+            TbLongtitude.Text = $"{marker.Position.Lng:F6}";
+            TbTitle.Text = marker.Title;
             TbStatus.Text = marker.PositionTitle;
             Panel.Visibility = Visibility.Visible;
 
@@ -133,6 +134,7 @@ namespace RitDrillingMonitoringWPFMVC
                 TbLatitude.Text = string.Empty;
                 TbLongtitude.Text = string.Empty;
                 TbStatus.Text = string.Empty;
+                TbTitle.Text = string.Empty;
                 Panel.Visibility = Visibility.Collapsed;
                 _currentElement = null;
             }

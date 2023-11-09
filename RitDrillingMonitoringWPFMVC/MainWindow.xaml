@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:RitDrillingMonitoringWPFMVC"
         xmlns:windowsPresentation="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
         mc:Ignorable="d"
-        Title="Rit Бортовое ПО" Height="450" Width="800" WindowStartupLocation="CenterScreen" MinWidth="600" MinHeight="350">
+        Title="Rit Бортовое ПО" Icon="Resources/rit-it.jpg" Height="450" Width="800" WindowStartupLocation="CenterScreen" MinWidth="600" MinHeight="350">
     <Window.Style>
         <Style TargetType="Window">
             <Setter Property="Background" Value="#FF212121" />
@@ -228,13 +228,16 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Margin="5" Foreground="White" Grid.Column="0">Широта:</TextBlock>
-                <TextBox IsReadOnly="True" Margin="2" Style="{StaticResource TextBoxStyle}" IsEnabled="False" x:Name="TbLatitude" Grid.Row="0" Grid.Column="1"></TextBox>
-                <TextBlock Grid.Column="0" Margin="5" Foreground="White" Grid.Row="1">Долгота:</TextBlock>
-                <TextBox IsReadOnly="True" Margin="2" Style="{StaticResource TextBoxStyle}" IsEnabled="False" x:Name="TbLongtitude" Grid.Row="1" Grid.Column="1"></TextBox>
-                <TextBlock Grid.Column="0" Margin="5" Foreground="White" Grid.Row="2">Статус:</TextBlock>
-                <TextBox IsReadOnly="True" Margin="2" Style="{StaticResource TextBoxStyle}" IsEnabled="False" x:Name="TbStatus" Grid.Row="2" Grid.Column="1"></TextBox>
+                <TextBlock Grid.Column="0" Margin="5" Foreground="White" Grid.Row="0">Название:</TextBlock>
+                <TextBox IsReadOnly="True" Margin="2" Style="{StaticResource TextBoxStyle}" IsEnabled="False" x:Name="TbTitle" Grid.Row="0" Grid.Column="1"></TextBox>
+                <TextBlock Grid.Row="1" Margin="5" Foreground="White" Grid.Column="0">Широта:</TextBlock>
+                <TextBox IsReadOnly="True" Margin="2" Style="{StaticResource TextBoxStyle}" IsEnabled="False" x:Name="TbLatitude" Grid.Row="1" Grid.Column="1"></TextBox>
+                <TextBlock Grid.Column="0" Margin="5" Foreground="White" Grid.Row="2">Долгота:</TextBlock>
+                <TextBox IsReadOnly="True" Margin="2" Style="{StaticResource TextBoxStyle}" IsEnabled="False" x:Name="TbLongtitude" Grid.Row="2" Grid.Column="1"></TextBox>
+                <TextBlock Grid.Column="0" Margin="5" Foreground="White" Grid.Row="3">Статус:</TextBlock>
+                <TextBox IsReadOnly="True" Margin="2" Style="{StaticResource TextBoxStyle}" IsEnabled="False" x:Name="TbStatus" Grid.Row="3" Grid.Column="1"></TextBox>
             </Grid>
 
         </StackPanel>

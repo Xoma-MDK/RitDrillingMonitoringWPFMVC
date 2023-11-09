@@ -121,10 +121,10 @@
   <data name="Hole" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Hole.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="pin" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pin.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="drill" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\drill.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="pin_blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pin_blue.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="drill_selected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\drill selected.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

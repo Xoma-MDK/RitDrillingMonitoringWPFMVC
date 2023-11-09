@@ -8,9 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\drill selected.png" />
+    <None Remove="Resources\drill.png" />
     <None Remove="Resources\Hole.png" />
-    <None Remove="Resources\pin.png" />
-    <None Remove="Resources\pin_blue.png" />
+    <None Remove="Resources\rit-it.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,9 +30,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\drill selected.png" />
+    <Resource Include="Resources\drill.png" />
     <Resource Include="Resources\Hole.png" />
-    <Resource Include="Resources\pin.png" />
-    <Resource Include="Resources\pin_blue.png" />
+    <Resource Include="Resources\rit-it.jpg" />
   </ItemGroup>
 
 </Project>

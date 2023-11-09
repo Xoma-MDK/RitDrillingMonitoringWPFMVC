@@ -22,8 +22,8 @@ namespace RitDrillingMonitoringWPFMVC.Views
             var img = new Image
             {
                 Tag = marker,
-                Width = 32,
-                Height = 32
+                Width = 8,
+                Height = 8
             };
 
             if (_pinSrcImage == null)
