@@ -203,7 +203,7 @@
 
         <windowsPresentation:GMapControl HorizontalAlignment="Stretch" x:Name="MapControl"
                                          MinZoom="2"
-                                         MaxZoom="18"
+                                         MaxZoom="20"
                                          CanDragMap="True"
                                          ShowTileGridLines="False"
                                          MouseDown="MapControlDrill_MouseDown" 
@@ -213,7 +213,7 @@
         </windowsPresentation:GMapControl>
         <StackPanel 
            x:Name="Panel" 
-           Visibility="Visible"
+           Visibility="Collapsed"
            HorizontalAlignment="Stretch"
            Grid.Column="2"
            Width="200"

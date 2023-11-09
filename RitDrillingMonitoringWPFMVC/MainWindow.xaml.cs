@@ -32,7 +32,7 @@ namespace RitDrillingMonitoringWPFMVC
 
         private void InitMap()
         {
-            MapControl.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
+            MapControl.MapProvider = GMap.NET.MapProviders.GoogleSatelliteMapProvider.Instance;
             MapControl.Zoom = 11;
             MapControl.Position = new PointLatLng(55.008111, 82.921768);
             MapControl.MouseWheelZoomType = MouseWheelZoomType.MousePositionWithoutCenter;
